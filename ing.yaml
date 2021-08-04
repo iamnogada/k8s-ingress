@@ -23,12 +23,12 @@ spec:
                 name: nginx1
                 port:
                   number: 80
-            path: /
+            path: /v1
             pathType: Prefix
-          # - backend:
-          #     service:
-          #       name: nginx2
-          #       port:
-          #         number: 80
-          #   path: /v2
-          #   pathType: Prefix
+          - backend:
+              service:
+                name: nginx2
+                port:
+                  number: 80
+            path: /v2
+            pathType: Prefix
