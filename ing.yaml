@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-southeast-2:170247361816:certificate/fc294972-da1d-4913-9b86-d34c20708040
+    alb.ingress.kubernetes.io/group.name: nogada-group
+    alb.ingress.kubernetes.io/ip-address-type: ipv4
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: instance
+    kubernetes.io/ingress.class: alb
+  labels:
+    app: nginx
+  name: nginx
+  namespace: nogada
+spec:
+  rules:
+    - host: nogada.kubepia.net
+      http:
+        paths:
+          - backend:
+              service:
+                name: nginx1
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+          # - backend:
+          #     service:
+          #       name: nginx2
+          #       port:
+          #         number: 80
+          #   path: /v2
+          #   pathType: Prefix

@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  index.html: |
+    <html>
+    <h1>Welcome to Nogada v1!!</h1>
+    </html>
+kind: ConfigMap
+metadata:
+  name: index-v1
+  namespace: nogada
+---
+apiVersion: v1
+data:
+  index.html: |
+    <html>
+    <h1>Welcome to Nogada v2!!</h1>
+    </html>
+kind: ConfigMap
+metadata:
+  name: index-v2
+  namespace: nogada
